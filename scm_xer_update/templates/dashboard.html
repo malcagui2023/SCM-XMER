@@ -1,0 +1,324 @@
+{% extends "base.html" %}
+
+{% block title %}{{ translations.dashboard }} - {{ translations.app_title }}{% endblock %}
+
+{% block content %}
+<!-- Welcome Header -->
+<div class="welcome-header mb-4">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <h1 class="welcome-title">{{ translations.welcome_message }}</h1>
+            <p class="welcome-subtitle">{{ translations.app_subtitle }}</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <div class="current-time">
+                <i class="fas fa-clock me-2"></i>
+                <span id="currentTime"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Daily Goals Progress -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card goals-card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-target me-2"></i>
+                    {{ translations.daily_goals }}
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="goal-progress">
+                            <div class="progress-circle" data-progress="63">
+                                <div class="progress-value">19/30</div>
+                            </div>
+                            <div class="goal-label">{{ translations.calls_made }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="goal-progress">
+                            <div class="progress-circle" data-progress="40">
+                                <div class="progress-value">4/10</div>
+                            </div>
+                            <div class="goal-label">{{ translations.payments_collected }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="goal-progress">
+                            <div class="progress-circle" data-progress="75">
+                                <div class="progress-value">R$ 7.5K/10K</div>
+                            </div>
+                            <div class="goal-label">{{ translations.collection_amount }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="goal-progress">
+                            <div class="progress-circle" data-progress="95">
+                                <div class="progress-value">95%</div>
+                            </div>
+                            <div class="goal-label">Compliance Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Priority Actions -->
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card priority-actions-card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Priority Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="priority-action-item high">
+                    <div class="action-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">High-Value Customer Follow-up</div>
+                        <div class="action-description">Maria Santos - R$ 5,200 debt - Promised callback today</div>
+                        <div class="action-meta">
+                            <span class="badge bg-danger">High Priority</span>
+                            <span class="text-muted">Due: 15:00</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-phone me-1"></i>Call Now
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="priority-action-item medium">
+                    <div class="action-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Payment Plan Follow-up</div>
+                        <div class="action-description">João Silva - 2nd installment due tomorrow</div>
+                        <div class="action-meta">
+                            <span class="badge bg-warning">Medium Priority</span>
+                            <span class="text-muted">Due: Tomorrow</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-envelope me-1"></i>Send Reminder
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="priority-action-item low">
+                    <div class="action-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="action-content">
+                        <div class="action-title">Scheduled Callbacks</div>
+                        <div class="action-description">5 customers scheduled for this afternoon</div>
+                        <div class="action-meta">
+                            <span class="badge bg-info">Scheduled</span>
+                            <span class="text-muted">14:00 - 17:00</span>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-list me-1"></i>View List
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card ai-insights-card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    {{ translations.ai_suggestions }}
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="ai-insight-item">
+                    <div class="insight-icon success">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-title">Peak Performance Time</div>
+                        <div class="insight-description">Your success rate is 40% higher between 2-4 PM</div>
+                    </div>
+                </div>
+                
+                <div class="ai-insight-item">
+                    <div class="insight-icon warning">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-title">Approach Recommendation</div>
+                        <div class="insight-description">Try empathy-first approach for overdue accounts</div>
+                    </div>
+                </div>
+                
+                <div class="ai-insight-item">
+                    <div class="insight-icon info">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-title">Weekly Trend</div>
+                        <div class="insight-description">Collection rate up 15% from last week</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activity -->
+<div class="row">
+    <div class="col-12">
+        <div class="card activity-card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-history me-2"></i>
+                    Recent Activity
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="activity-timeline">
+                    <div class="activity-item success">
+                        <div class="activity-time">14:30</div>
+                        <div class="activity-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Payment Collected</div>
+                            <div class="activity-description">Ana Costa - R$ 1,200 (Full payment)</div>
+                        </div>
+                        <div class="activity-status">
+                            <span class="badge bg-success">Success</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item success">
+                        <div class="activity-time">14:15</div>
+                        <div class="activity-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Agreement Reached</div>
+                            <div class="activity-description">Carlos Oliveira - 6x payment plan</div>
+                        </div>
+                        <div class="activity-status">
+                            <span class="badge bg-success">Success</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item warning">
+                        <div class="activity-time">14:00</div>
+                        <div class="activity-icon">
+                            <i class="fas fa-phone-slash"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">No Contact</div>
+                            <div class="activity-description">Pedro Santos - Voicemail left</div>
+                        </div>
+                        <div class="activity-status">
+                            <span class="badge bg-warning">No Contact</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item info">
+                        <div class="activity-time">13:45</div>
+                        <div class="activity-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Callback Scheduled</div>
+                            <div class="activity-description">Lucia Ferreira - Tomorrow 10:00 AM</div>
+                        </div>
+                        <div class="activity-status">
+                            <span class="badge bg-info">Scheduled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Update current time
+function updateTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('{{ lang }}-{{ lang.upper() }}', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    document.getElementById('currentTime').textContent = timeString;
+}
+
+// Initialize progress circles
+function initializeProgressCircles() {
+    document.querySelectorAll('.progress-circle').forEach(circle => {
+        const progress = circle.getAttribute('data-progress');
+        const circumference = 2 * Math.PI * 45; // radius = 45
+        const offset = circumference - (progress / 100) * circumference;
+        
+        // Create SVG if not exists
+        if (!circle.querySelector('svg')) {
+            circle.innerHTML = `
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e9ecef" stroke-width="8"/>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary-color)" 
+                            stroke-width="8" stroke-linecap="round"
+                            stroke-dasharray="${circumference}" 
+                            stroke-dashoffset="${offset}"
+                            transform="rotate(-90 50 50)"/>
+                </svg>
+                ${circle.innerHTML}
+            `;
+        }
+    });
+}
+
+// Load dashboard data
+function loadDashboardData() {
+    fetch('/api/dashboard-data')
+        .then(response => response.json())
+        .then(data => {
+            // Update companion sidebar stats
+            document.getElementById('todayCalls').textContent = data.daily_stats.calls_made;
+            document.getElementById('todayCollections').textContent = data.daily_stats.payments_collected;
+            document.getElementById('todayAmount').textContent = `R$ ${(data.daily_stats.collection_amount / 1000).toFixed(1)}K`;
+        })
+        .catch(error => {
+            console.error('Error loading dashboard data:', error);
+        });
+}
+
+// Initialize dashboard
+document.addEventListener('DOMContentLoaded', function() {
+    updateTime();
+    setInterval(updateTime, 1000);
+    initializeProgressCircles();
+    loadDashboardData();
+    
+    // Update dashboard data every 30 seconds
+    setInterval(loadDashboardData, 30000);
+});
+</script>
+{% endblock %}
+
